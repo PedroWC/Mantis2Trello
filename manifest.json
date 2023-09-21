@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "Mantis2Trello Atualizado",
+    "version": "1.0",
+    "description": "",
+    "permissions": [
+      "activeTab",
+      "storage"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "icons": {
+      "16": "Mantis2TrelloIcon16.png",
+      "48": "Mantis2TrelloIcon48.png",
+      "128": "Mantis2TrelloIcon128.png"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "Mantis2TrelloIcon16.png",
+        "48": "Mantis2TrelloIcon48.png",
+        "128": "Mantis2TrelloIcon128.png"
+      }
+    },
+    "options_ui": {
+      "page": "options.html",
+      "open_in_tab": true
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "*://*/mantis/view.php*",
+          "*://*/bugs/view.php*",
+          "*://*/view.php*"
+        ],
+        "js": [
+          "jquery.3.7.1.min.js",
+          "client.js",
+          "content.js"
+        ],
+        "run_at": "document_end"
+      }
+    ]
+  }
+  
