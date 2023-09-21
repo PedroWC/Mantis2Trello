@@ -4,5 +4,5 @@ Extensão do chrome para criar cards automaticamente a partir de casos do Mantis
 
 # Tarefas 
 
-- [] Criar Readme
-- [] Estruturar pastas
+- [ ] Criar Readme
+- [ ] Estruturar pastas
