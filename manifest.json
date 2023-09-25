@@ -10,18 +10,18 @@
     "storage"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "js/background.js"
   },
   "icons": {
-    "16": "Mantis2TrelloIcon16.png",
-    "48": "Mantis2TrelloIcon48.png",
-    "128": "Mantis2TrelloIcon128.png"
+    "16": "icons/Mantis2TrelloIcon16.png",
+    "48": "icons/Mantis2TrelloIcon48.png",
+    "128": "icons/Mantis2TrelloIcon128.png"
   },
   "action": {
     "default_icon": {
-      "16": "Mantis2TrelloIcon16.png",
-      "48": "Mantis2TrelloIcon48.png",
-      "128": "Mantis2TrelloIcon128.png"
+      "16": "icons/Mantis2TrelloIcon16.png",
+      "48": "icons/Mantis2TrelloIcon48.png",
+      "128": "icons/Mantis2TrelloIcon128.png"
     }
   },
   "options_ui": {
@@ -37,8 +37,8 @@
       ],
       "js": [
         "src/jquery.3.7.1.min.js",
-        "client.js",
-        "content.js"
+        "js/client.js",
+        "js/content.js"
       ],
       "run_at": "document_end"
     }
