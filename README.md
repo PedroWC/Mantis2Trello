@@ -2,7 +2,7 @@
 Crie cartão Trello a partir do Mantis Ticket
 
 ## Requisitos de configuração
-![alt tag](https://raw.githubusercontent.com/PedroWC/Mantis2Trello/blob/master/resources/primeiroPassoConfiguracao.png)
+![primeiroPassoConfiguracao](https://github.com/PedroWC/Mantis2Trello/assets/63911644/89e9570e-5f53-423e-ac98-d71af81b02f4)
 
 1. Você precisa de uma chave de API do Trello.
 2. Você precisa ter a lista de identificação do Trello, onde deseja criar cartões Mantis.
