@@ -1,5 +1,14 @@
 # Mantis2Trello
-Crie cartão Trello a partir do Mantis Ticket
+Extensão do chrome para criar cards no Trello a partir de casos do Mantis PRODEMGE.
+
+## Tarefas 
+
+- [x] Criar Readme
+- [x] Estruturar pastas
+- [ ] Mensagem de confirmação de salvamento de configurações não está funcionando
+- [ ] Autorização para criação de token trello com problemas
+- [ ] Implementar tags
+- [ ] Conferir eventos no google analytics
 
 ## Requisitos de configuração
 ![primeiroPassoConfiguracao](https://github.com/PedroWC/Mantis2Trello/assets/63911644/ed131ea6-dd05-40ab-932b-96d07aaae417)
