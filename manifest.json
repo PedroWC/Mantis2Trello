@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Mantis2Trello Atualizado",
+  "name": "Mantis2Trello",
   "version": "1.0",
   "description": "",
   "permissions": [
@@ -10,7 +10,7 @@
     "storage"
   ],
   "background": {
-    "service_worker": "js/background.js"
+    "service_worker": "background.js"
   },
   "icons": {
     "16": "icons/Mantis2TrelloIcon16.png",
@@ -18,11 +18,8 @@
     "128": "icons/Mantis2TrelloIcon128.png"
   },
   "action": {
-    "default_icon": {
-      "16": "icons/Mantis2TrelloIcon16.png",
-      "48": "icons/Mantis2TrelloIcon48.png",
-      "128": "icons/Mantis2TrelloIcon128.png"
-    }
+    "default_icon": "icons/Mantis2TrelloIcon16.png",
+    "default_title" : "Clique para criar um cartão Trello com este mantis."
   },
   "options_ui": {
     "page": "options.html",
@@ -31,14 +28,13 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*/mantis/view.php*",
-        "*://*/bugs/view.php*",
+        "*://*/*mantis/view.php*",
         "*://*/view.php*"
       ],
       "js": [
         "src/jquery.3.7.1.min.js",
-        "js/client.js",
-        "js/content.js"
+        "client.js",
+        "content.js"
       ],
       "run_at": "document_end"
     }
