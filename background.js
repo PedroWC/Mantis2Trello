@@ -28,7 +28,7 @@ function sendClickMessage() {
     var currentTab = tabs[0].id;
     // Muda o ícone da extensão para um ícone de "carregando"
     chrome.action.setIcon({
-      path: "Mantis2TrelloLoadingIcon16.png",
+      path: "icons/Mantis2TrelloLoadingIcon16.png",
       tabId: currentTab
     });
     // Envia uma mensagem para o conteúdo da aba atual
@@ -43,7 +43,7 @@ function onMessageCallback(request, sender, sendResponse) {
     var currentTab = tabs[0].id;
     // Muda o ícone da extensão de volta para o ícone padrão
     chrome.action.setIcon({
-      path: "Mantis2TrelloIcon16.png",
+      path: "icons/Mantis2TrelloIcon16.png",
       tabId: currentTab  // O tabId ainda pode ser usado se você quiser que o ícone seja atualizado apenas para uma aba específica
     });
   });  
