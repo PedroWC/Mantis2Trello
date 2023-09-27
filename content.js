@@ -55,46 +55,8 @@ var creationFailure = function (data) {
   alert('Error:' + JSON.stringify(data));
 };
 
-
-function selectPriority(cardPriority) {
-  // if (cardPriority.includes('baixa')) {
-  //   return {
-  //     "id": "63b82fc2436dd10169c90da8",
-  //     "idBoard": "5aa82b65a64c6258b61a4f68",
-  //     "name": "Prioridade: baixa",
-  //     "color": "red_dark"
-  //   }
-  // } else if (cardPriority.includes('normal')) {
-  //   return {
-  //     "id": "63b82fd7a39344039295f287",
-  //     "idBoard": "5aa82b65a64c6258b61a4f68",
-  //     "name": "Prioridade: normal",
-  //     "color": "red_dark"
-  //   }
-  // } else if (cardPriority.includes('alta')) {
-  //   return {
-  //     "id": "63b82fe24c68bb016afd6ed6",
-  //     "idBoard": "5aa82b65a64c6258b61a4f68",
-  //     "name": "Prioridade: alta",
-  //     "color": "red_dark"
-  //   }
-  // } else {
-  //   return {
-  //     "id": "63b82fe24c68bb016afd6ed6",
-  //     "idBoard": "5aa82b65a64c6258b61a4f68",
-  //     "name": "Prioridade: alta",
-  //     "color": "red_dark"
-  //   }
-  // }
-  if (cardPriority.includes('baixa')) {
-    return "64fe9edec4b65b649a80a5fd"
-  } else if (cardPriority.includes('normal')) {
-    return "64fe9eeb8d3cfd89300c9e4e"
-  } else if (cardPriority.includes('alta')) {
-    return "64fe9ef65b7ca1576250fa3a"
-  } else {
-    return "64fe9ef65b7ca1576250fa3a"
-  }
+function selectTags () {
+  
 }
 
 function selectSystem(category) {

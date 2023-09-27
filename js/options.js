@@ -1,9 +1,8 @@
-// https://developer.chrome.com/docs/extensions/mv3/tut_analytics/
 var mantis2TrelloOptions = {
     trelloAPIKey: '',
     trelloBoardId: '',
     trelloColumnId: '',
-    tags: []
+    tags: {}
 }
 
 // Document Ready Function: executa quando todo o documento HTML foi completamente carregado.
@@ -27,83 +26,47 @@ $(function () {
 });
 
 
-
-function addTag(tag) {
-    var div = document.createElement("div");
-    div.className = "form-check form-switch form-check";
-
-    var input = document.createElement("input");
-    input.className = "form-check-input ativo";
-    input.type = "checkbox";
-    input.id = "flexSwitchCheckReverse";
-
-    var label_name = document.createElement("label");
-    label_name.className = "form-check-label tagName";
-    label_name.setAttribute("for", "flexSwitchCheckReverse");
-    label_name.textContent = tag.name;
-    
-    var label_xpath = document.createElement("label");
-    label_xpath.className = "tagXpath";
-    label_xpath.setAttribute("hidden", "");
-    label_xpath.setAttribute("type", "text");
-    label_xpath.textContent = tag.xpath;
-    
-    var label_tagvalue = document.createElement("label");
-    label_tagvalue.className = "tagValue";
-    label_tagvalue.setAttribute("hidden", "");
-    label_tagvalue.setAttribute("type", "text");
-    label_tagvalue.textContent = tag.value;
-
-    var label_tagId = document.createElement("label");
-    label_tagId.className = "tagId";
-    label_tagId.setAttribute("hidden", "");
-    label_tagId.setAttribute("type", "text");
-    label_tagId.textContent = tag.tagId;
-
-    div.appendChild(input);
-    div.appendChild(label_name);
-    div.appendChild(label_xpath);
-    div.appendChild(label_tagvalue);
-    div.appendChild(label_tagId);
-
-
-    var conteudoAdicionado = document.getElementById("tagList");
-    conteudoAdicionado.appendChild(div);
-}
-
-function add() {
-    var tag = {
-        name: document.getElementById("tagName").value,
-        xpath: document.getElementById("tagXpath").value,
-        value: document.getElementById("tagValue").value,
-        tagId: document.getElementById("tagId").value
-    }
-
-    addTag(tag);
-}
-
 function save_options() {
 
     mantis2TrelloOptions.trelloAPIKey = document.getElementById('trelloAPIKey').value;
     mantis2TrelloOptions.trelloBoardId = document.getElementById('trelloBoardId').value;
     mantis2TrelloOptions.trelloColumnId = document.getElementById('trelloColumnId').value;
 
-    let ativo = document.getElementsByClassName("ativo");
-    let nametags = document.getElementsByClassName("tagName");
-    let xpathtags = document.getElementsByClassName("tagXpath");
-    let valuetags = document.getElementsByClassName("tagValue");
-    let tagIds = document.getElementsByClassName("tagId");
-
-    let tags = [];
-
-    for (let i = 0; i < nametags.length; i++) {
-        if (ativo[i].checked){
-            tags.push({
-                name: nametags[i].value,
-                xpath: xpathtags[i].value,
-                value: valuetags[i].value,
-                tagId: tagIds[i].value
-            });
+    var tags = { 
+        Categoria : {
+            valor : document.getElementById('valorCategoria').value,
+            tag : document.getElementById('tagCategoria').value,
+            switch : document.getElementById('switchCategoria').checked
+        },    
+        Gravidade : {
+            valor : document.getElementById('valorGravidade').value,
+            tag : document.getElementById('tagGravidade').value,
+            switch : document.getElementById('switchGravidade').checked
+        },    
+        Frequencia : {
+            valor : document.getElementById('valorFrequencia').value,
+            tag : document.getElementById('tagFrequencia').value,
+            switch : document.getElementById('switchFrequencia').checked
+        },    
+        Relator : {
+            valor : document.getElementById('valorRelator').value,
+            tag : document.getElementById('tagRelator').value,
+            switch : document.getElementById('switchRelator').checked
+        },    
+        Visibilidade : {
+            valor : document.getElementById('valorVisibilidade').value,
+            tag : document.getElementById('tagVisibilidade').value,
+            switch : document.getElementById('switchVisibilidade').checked
+        },   
+        Prioridade : {
+            valor : document.getElementById('valorPrioridade').value,
+            tag : document.getElementById('tagPrioridade').value,
+            switch : document.getElementById('switchPrioridade').checked
+        },  
+        Status : {
+            valor : document.getElementById('valorStatus').value,
+            tag : document.getElementById('tagStatus').value,
+            switch : document.getElementById('switchStatus').checked
         }
     }
 
@@ -114,6 +77,8 @@ function save_options() {
         console.log("Settings saved to chrome storage.");
     });
 
+    alert('Configurações salvas com sucesso!');
+
     loadScript('https://www.googletagmanager.com/gtag/js?id=G-SNVFE94072', function() {
     window.dataLayer = window.dataLayer || [];
     function gtag(){
@@ -123,34 +88,55 @@ function save_options() {
     gtag('config', 'G-SNVFE94072');
     gtag('event', 'options_saved');
     });
-
-    alert('Configurações salvas com sucesso!');
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
 function restore_options() {
     try {
-    // Obtém a variável mantis2TrelloOptions do chrome.storage
-        chrome.storage.sync.get('mantis2TrelloOptions', function (data) {
-            let mantis2TrelloOptions = data.mantis2TrelloOptions;
+        // Buscar a variável mantis2TrelloOptions em chrome.storage
+        chrome.storage.sync.get('mantis2TrelloOptions', function(data) {
+            var mantis2TrelloOptions = data.mantis2TrelloOptions;
 
             if (mantis2TrelloOptions) {
-                // Restaura as opções nas caixas de texto correspondentes
-                document.getElementById('trelloAPIKey').value = mantis2TrelloOptions.trelloAPIKey || "";
-                document.getElementById('trelloBoardId').value = mantis2TrelloOptions.trelloBoardId || "";
-                document.getElementById('trelloColumnId').value = mantis2TrelloOptions.trelloColumnId || "";
+                document.getElementById('trelloAPIKey').value = mantis2TrelloOptions.trelloAPIKey;
+                document.getElementById('trelloBoardId').value = mantis2TrelloOptions.trelloBoardId;
+                document.getElementById('trelloColumnId').value = mantis2TrelloOptions.trelloColumnId;
 
-                // Restaurar as tags é um pouco mais complicado porque temos múltiplas
-                if (Array.isArray(mantis2TrelloOptions.tags)) {
-                    mantis2TrelloOptions.tags.forEach(element => {
-                        addTag(element);
-                    });
+                var tags = mantis2TrelloOptions.tags;
+                if (tags) {
+                    // Categoria
+                    document.getElementById('valorCategoria').value = tags.Categoria.valor;
+                    document.getElementById('tagCategoria').value = tags.Categoria.tag;
+                    document.getElementById('switchCategoria').checked = tags.Categoria.switch;
+                    // Gravidade
+                    document.getElementById('valorGravidade').value = tags.Gravidade.valor;
+                    document.getElementById('tagGravidade').value = tags.Gravidade.tag;
+                    document.getElementById('switchGravidade').checked = tags.Gravidade.switch;
+                    // Frequencia
+                    document.getElementById('valorFrequencia').value = tags.Frequencia.valor;
+                    document.getElementById('tagFrequencia').value = tags.Frequencia.tag;
+                    document.getElementById('switchFrequencia').checked = tags.Frequencia.switch;
+                    // Relator
+                    document.getElementById('valorRelator').value = tags.Relator.valor;
+                    document.getElementById('tagRelator').value = tags.Relator.tag;
+                    document.getElementById('switchRelator').checked = tags.Relator.switch;
+                    // Visibilidade
+                    document.getElementById('valorVisibilidade').value = tags.Visibilidade.valor;
+                    document.getElementById('tagVisibilidade').value = tags.Visibilidade.tag;
+                    document.getElementById('switchVisibilidade').checked = tags.Visibilidade.switch;
+                    // Prioridade
+                    document.getElementById('valorPrioridade').value = tags.Prioridade.valor;
+                    document.getElementById('tagPrioridade').value = tags.Prioridade.tag;
+                    document.getElementById('switchPrioridade').checked = tags.Prioridade.switch;
+                    // Status
+                    document.getElementById('valorStatus').value = tags.Status.valor;
+                    document.getElementById('tagStatus').value = tags.Status.tag;
+                    document.getElementById('switchStatus').checked = tags.Status.switch;
+
                 }
             }
         });
     } catch {
-        console.log('Não existem dados salvos na sessão...')
+        console.log('Não existem dados salvos na sessão...');
     }
 }
 

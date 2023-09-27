@@ -1,5 +1,6 @@
 body {
 	margin:  0;
+    background: #383a4f;
 }
 .page-content {
 	width: 100%;
@@ -499,4 +500,20 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 		right: 2%;
 	}
 	
-} 
+}
+
+.card {
+    background: #767aa9;
+}
+
+.inputCard {
+    background: #8386a7;
+}
+
+.spanCard {
+    background: #70738f;
+}
+
+.discreetEdge {
+    border-color: slategray;
+}
