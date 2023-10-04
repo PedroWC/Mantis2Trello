@@ -14,18 +14,16 @@ scriptElement.onload = function() {
     gtag('config', 'G-SNVFE94072');
 };
 
-
 var mantis2TrelloOptions = {
   trelloAPIKey: '',
   trelloBoardId: '',
   trelloColumnId: '',
   tags: []
-}
+};
+
 chrome.storage.sync.get('mantis2TrelloOptions', function (data) {
-  mantis2TrelloOptions.trelloAPIKey = data.mantis2TrelloOptions.trelloAPIKey,
-  mantis2TrelloOptions.trelloBoardId = data.mantis2TrelloOptions.trelloBoardId,
-  mantis2TrelloOptions.trelloColumnId = data.mantis2TrelloOptions.trelloColumnId,
-  mantis2TrelloOptions.tags = data.mantis2TrelloOptions.tags
+  const { trelloAPIKey, trelloBoardId, trelloColumnId, tags } = data.mantis2TrelloOptions;
+  Object.assign(mantis2TrelloOptions, { trelloAPIKey, trelloBoardId, trelloColumnId, tags });
 });
 
 function gx(path) {
@@ -37,7 +35,6 @@ var authenticationSuccess = function () {
   console.log('Tentando criar um cartão Trello...');
   createCard();
 };
-
 
 var authenticationFailure = function () {
   console.log('Falha na autenticação');
@@ -55,59 +52,62 @@ var creationFailure = function (data) {
   alert('Error:' + JSON.stringify(data));
 };
 
-function selectTags () {
+function searchTag(tagName) {
+  labels = Trello.get('/boards/' + mantis2TrelloOptions.trelloBoardId + '/labels/');
+
+  JSON.parse()
+
+  labels.forEach(element => {
+    if (element.name.equals(tagName)) {
+      return element.id
+    }
+
+    return ''
+  });
+}
+
+function selectTags (tags) {
+  var labels = []
+  const tagKeys = [
+    'categoria',    'gravidade', 
+    'frequencia',   'relator', 
+    'visibilidade', 'prioridade', 
+    'st'
+  ];
+  const xpathMap = {
+    'categoria'     : '/html/body/table[3]/tbody/tr[3]/td[2]',
+    'gravidade'     : '/html/body/table[3]/tbody/tr[3]/td[3]',
+    'frequencia'    : '/html/body/table[3]/tbody/tr[3]/td[4]',
+    'relator'       : '/html/body/table[3]/tbody/tr[5]/td[2]',
+    'visibilidade'  : '/html/body/table[3]/tbody/tr[5]/td[4]',
+    'prioridade'    : '/html/body/table[3]/tbody/tr[7]/td[2]',
+    'st'            : '/html/body/table[3]/tbody/tr[7]/td[2]'
+  };
   
-}
+  tagKeys.forEach(tagKey => {
+    if (tags[tagKey].switch) {
 
-function selectSystem(category) {
-  // if (category.includes('SISOR')) {
-  //   return {
-  //     "id": "63c15458a270c703d9d95eea",
-  //     "idBoard": "5aa82b65a64c6258b61a4f68",
-  //     "name": "SISOR",
-  //     "color": "green_light"
-  //   }
-  // }
-  // else if (category.includes('SIGPLAN')) {
-  //   return {
-  //     "id": "63c1547defd83403697870f1",
-  //     "idBoard": "5aa82b65a64c6258b61a4f68",
-  //     "name": "SIGPLAN",
-  //     "color": "green_light"
-  //   }
-  // }
-  if (category.includes('SISOR')) {
-    return "64fe9f1a0d6c417d1d711f91"
-  }
-  else if (category.includes('SIGPLAN')) {
-    return "64fe9f26a9d7c163bec59110"
-  }
-  else {
-    alert("Categoria não cadastrada no Trello. Categoria do mantis: " + category);
-    throw new Error("Categoria não cadastrada. Categoria do mantis: " + category);
-  }
-}
+      const value = gx(xpathMap[tagKey]).innerText;
 
+      if (tags[tagKey] === value) {
+        labels.push({
+          "id": searchTag(tags[tagKey].tag)
+        });
+      }
+    }
+  });
+
+  return labels
+}
 
 var createCard = function () {
-  var mantisSummary = gx('/html/body/table[3]/tbody/tr[10]/td[2]').innerText;
-  var mantisDescription = gx('/html/body/table[3]/tbody/tr[11]/td[2]').innerText;
-  var mantisUrl = window.location.href;
-  var mantisPriority = gx('/html/body/table[3]/tbody/tr[7]/td[2]').innerText;
-  var mantisCategory = gx('/html/body/table[3]/tbody/tr[3]/td[2]').innerText;
-
-  var mantisList = mantis2TrelloOptions.trelloColumnId;
-
   var newCard = {
-    name: mantisSummary,
-    desc: mantisDescription,
-    idList: mantisList,
+    name: gx('/html/body/table[3]/tbody/tr[10]/td[2]').innerText,
+    desc: gx('/html/body/table[3]/tbody/tr[11]/td[2]').innerText,
+    idList: mantis2TrelloOptions.trelloColumnId,
     pos: 'top',
-    urlSource: mantisUrl,
-    idLabels: [
-      selectPriority(mantisPriority),
-      selectSystem(mantisCategory)
-    ]
+    urlSource: window.location.href,
+    idLabels: selectTags(mantis2TrelloOptions.tags)
   };
 
   Trello.post('/cards/', newCard, creationSuccess, creationFailure);
@@ -115,7 +115,6 @@ var createCard = function () {
 };
 
 var authorizationTrello = function (mantis2TrelloOptions) {
-
   Trello.setKey(mantis2TrelloOptions.trelloAPIKey);
   Trello.authorize({
     type: 'popup',
@@ -130,10 +129,8 @@ var authorizationTrello = function (mantis2TrelloOptions) {
   });
 };
 
-
 var onMessageCallback = function (request, sender, sendResponse) {
   chrome.storage.sync.get(mantis2TrelloOptions, authorizationTrello);
 };
 
 chrome.runtime.onMessage.addListener(onMessageCallback);
-

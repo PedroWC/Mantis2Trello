@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Mantis2Trello",
   "version": "1.0",
-  "description": "",
+  "description": "Extensão do chrome para criar cards no Trello a partir de casos do Mantis PRODEMGE.",
   "permissions": [
     "declarativeContent",
     "tabs",
