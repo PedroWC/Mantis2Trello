@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <title>Mantis2Trello</title>
     <!-- Font-->
-    <link rel="stylesheet" type="text/css" href="src/font.css">
-    <link rel="stylesheet" href="src/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="libs/fonts/font.css">
+    <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
     <!-- Main Style Css -->
     <link rel="stylesheet" href="css/options.css" />
 </head>
@@ -16,11 +16,13 @@
         <div class="wizard-heading">Mantis2Trello</div>
         <div class="wizard-v6-content">
             <div class="wizard-form">
-                <form class="form-register" id="form-register" action="save_options">
+                <form class="form-register" id="form-register">
                     <div id="form-total">
                         <!-- SECTION 1 -->
                         <h2>
-                            <p class="step-icon"><span>1</span></p>
+                            <p class="step-icon">
+                                <span>1</span>
+                            </p>
                             <span class="step-text">Keys</span>
                         </h2>
                         <section>
@@ -32,7 +34,7 @@
 
                                 <div class="mb-3">
                                     <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon3">Trello API Key</span>
+                                        <span class="input-group-text" id="basic-addon1">Trello API Key</span>
                                         <input type="text" class="form-control" id="trelloAPIKey"
                                             aria-describedby="basic-addon3 basic-addon4">
                                     </div>
@@ -41,7 +43,7 @@
 
                                 <div class="mb-3">
                                     <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon3">Trello board id</span>
+                                        <span class="input-group-text" id="basic-addon2">Trello board id</span>
                                         <input type="text" class="form-control" id="trelloBoardId"
                                             aria-describedby="basic-addon3 basic-addon4">
                                     </div>
@@ -235,10 +237,11 @@
             </div>
         </div>
     </div>
-    <script src="src/bootstrap.bundle.min.js"></script>
-    <script src="src/jquery-3.3.1.min.js"></script>
-    <script src="src/jquery.steps.min.js"></script>
-    <script src="src/jquery-ui.min.js"></script>
+    <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="libs/jquery/jquery-3.3.1.min.js"></script>
+    <script src="libs/jquery/jquery.steps.min.js"></script>
+    <script src="libs/jquery/jquery-ui.min.js"></script>
+    <script src="libs/analytics/googletagmanager.js"></script>
     <script src="js/options.js"></script>
 </body>
 

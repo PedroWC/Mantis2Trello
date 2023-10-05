@@ -32,68 +32,68 @@ function save_options() {
     mantis2TrelloOptions.trelloBoardId = document.getElementById('trelloBoardId').value;
     mantis2TrelloOptions.trelloColumnId = document.getElementById('trelloColumnId').value;
 
-    var tags = { 
-        Categoria : {
-            valor : document.getElementById('valorCategoria').value,
-            tag : document.getElementById('tagCategoria').value,
-            switch : document.getElementById('switchCategoria').checked
-        },    
-        Gravidade : {
-            valor : document.getElementById('valorGravidade').value,
-            tag : document.getElementById('tagGravidade').value,
-            switch : document.getElementById('switchGravidade').checked
-        },    
-        Frequencia : {
-            valor : document.getElementById('valorFrequencia').value,
-            tag : document.getElementById('tagFrequencia').value,
-            switch : document.getElementById('switchFrequencia').checked
-        },    
-        Relator : {
-            valor : document.getElementById('valorRelator').value,
-            tag : document.getElementById('tagRelator').value,
-            switch : document.getElementById('switchRelator').checked
-        },    
-        Visibilidade : {
-            valor : document.getElementById('valorVisibilidade').value,
-            tag : document.getElementById('tagVisibilidade').value,
-            switch : document.getElementById('switchVisibilidade').checked
-        },   
-        Prioridade : {
-            valor : document.getElementById('valorPrioridade').value,
-            tag : document.getElementById('tagPrioridade').value,
-            switch : document.getElementById('switchPrioridade').checked
-        },  
-        Status : {
-            valor : document.getElementById('valorStatus').value,
-            tag : document.getElementById('tagStatus').value,
-            switch : document.getElementById('switchStatus').checked
+    var tags = {
+        Categoria: {
+            valor: document.getElementById('valorCategoria').value,
+            tag: document.getElementById('tagCategoria').value,
+            switch: document.getElementById('switchCategoria').checked
+        },
+        Gravidade: {
+            valor: document.getElementById('valorGravidade').value,
+            tag: document.getElementById('tagGravidade').value,
+            switch: document.getElementById('switchGravidade').checked
+        },
+        Frequencia: {
+            valor: document.getElementById('valorFrequencia').value,
+            tag: document.getElementById('tagFrequencia').value,
+            switch: document.getElementById('switchFrequencia').checked
+        },
+        Relator: {
+            valor: document.getElementById('valorRelator').value,
+            tag: document.getElementById('tagRelator').value,
+            switch: document.getElementById('switchRelator').checked
+        },
+        Visibilidade: {
+            valor: document.getElementById('valorVisibilidade').value,
+            tag: document.getElementById('tagVisibilidade').value,
+            switch: document.getElementById('switchVisibilidade').checked
+        },
+        Prioridade: {
+            valor: document.getElementById('valorPrioridade').value,
+            tag: document.getElementById('tagPrioridade').value,
+            switch: document.getElementById('switchPrioridade').checked
+        },
+        Status: {
+            valor: document.getElementById('valorStatus').value,
+            tag: document.getElementById('tagStatus').value,
+            switch: document.getElementById('switchStatus').checked
         }
     }
 
     mantis2TrelloOptions.tags = tags;
 
     // Salvar a variável mantis2TrelloOptions em chrome.storage
-    chrome.storage.sync.set({ 'mantis2TrelloOptions': mantis2TrelloOptions }, function () {
+    chrome.storage.sync.set({'mantis2TrelloOptions': mantis2TrelloOptions}, function () {
         console.log("Settings saved to chrome storage.");
     });
 
     alert('Configurações salvas com sucesso!');
 
-    loadScript('https://www.googletagmanager.com/gtag/js?id=G-SNVFE94072', function() {
     window.dataLayer = window.dataLayer || [];
-    function gtag(){
+
+    function gtag() {
         dataLayer.push(arguments);
     }
+
     gtag('js', new Date());
     gtag('config', 'G-SNVFE94072');
     gtag('event', 'options_saved');
-    });
 }
 
 function restore_options() {
     try {
         // Buscar a variável mantis2TrelloOptions em chrome.storage
-        chrome.storage.sync.get('mantis2TrelloOptions', function(data) {
+        chrome.storage.sync.get('mantis2TrelloOptions', function (data) {
             var mantis2TrelloOptions = data.mantis2TrelloOptions;
 
             if (mantis2TrelloOptions) {
