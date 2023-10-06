@@ -140,5 +140,126 @@ function restore_options() {
     }
 }
 
+function adicionarCard() {
+
+    let col = document.createElement("div");
+    col.className = "col";
+    let card = document.createElement("div");
+    card.className = "card";
+    let card_body = document.createElement("div");
+    card_body.className = "card-body";
+    let card_title = document.createElement("div");
+    card_title.className = "card-title";
+    let input_group1 = document.createElement("input-group mb-3");
+    input_group1.className = "input-group mb-3";
+    let span1 = document.createElement("span");
+    span1.className = "input-group-text discreetEdge spanCard";
+
+    let input1 = document.createElement("input");
+    input1.className = "";
+
+}
+
+
+
+function criarCard(categoria) {
+    // Criação do elemento principal <div class="col">
+    const divCol = document.createElement('div');
+    divCol.className = "col";
+
+    // Criação do elemento <div class="card">
+    const divCard = document.createElement('div');
+    divCard.className = "card";
+
+    // Criação do elemento <div class="card-body">
+    const divCardBody = document.createElement('div');
+    divCardBody.className = "card-body";
+
+    // Criação do elemento <h5 class="card-title">Status</h5>
+    const h5 = document.createElement('h5');
+    h5.className = "card-title";
+    h5.textContent = "Status";
+
+    // Criação dos grupos de input
+    const createInputGroup = (id, labelText) => {
+        const divInputGroup = document.createElement('div');
+        divInputGroup.className = "input-group mb-3";
+
+        const span = document.createElement('span');
+        span.className = "input-group-text discreetEdge spanCard";
+        span.textContent = labelText;
+
+        const input = document.createElement('input');
+        input.id = id;
+        input.type = "text";
+        input.className = "form-control discreetEdge inputCard";
+        input.setAttribute("aria-describedby", "basic-addon3");
+
+        divInputGroup.appendChild(span);
+        divInputGroup.appendChild(input);
+
+        return divInputGroup;
+    };
+
+    const divInputGroupValor = createInputGroup("valor" + categoria, "Valor");
+    const divInputGroupTag = createInputGroup("tag" + categoria, "Tag");
+
+    // Criação do switch
+    const divFormSwitch = document.createElement('div');
+    divFormSwitch.className = "form-check form-switch";
+
+    const inputSwitch = document.createElement('input');
+    inputSwitch.id = "switch" + categoria;
+    inputSwitch.className = "form-check-input";
+    inputSwitch.type = "checkbox";
+    inputSwitch.setAttribute("role", "switch");
+
+    divFormSwitch.appendChild(inputSwitch);
+
+    // Adicionando todos os elementos ao card body
+    divCardBody.appendChild(h5);
+    divCardBody.appendChild(divInputGroupValor);
+    divCardBody.appendChild(divInputGroupTag);
+    divCardBody.appendChild(divFormSwitch);
+
+    // Adicionando o card body ao card
+    divCard.appendChild(divCardBody);
+
+    // Adicionando o card à coluna principal
+    divCol.appendChild(divCard);
+
+    document.getElementById("cardsContainer").appendChild(divCol);
+}
+
+function adicionarCard() {
+    // Criando o trecho HTML que você forneceu
+    var cardHTML = `
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Status</h5>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text discreetEdge spanCard">Valor</span>
+                        <input id="valorStatus" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text discreetEdge spanCard">Tag</span>
+                        <input id="tagStatus" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
+                    </div>
+                    <div class="form-check form-switch">
+                        <input id="switchStatus" class="form-check-input" type="checkbox" role="switch">
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Adicionando o trecho HTML em um container específico
+    // Supondo que há um container com o id 'container' onde você quer adicionar o card
+    var container = document.getElementById('cardsContainer');
+    container.innerHTML += cardHTML;
+}
+
+
 
 document.addEventListener('DOMContentLoaded', restore_options);
