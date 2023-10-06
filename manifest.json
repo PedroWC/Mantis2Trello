@@ -22,7 +22,7 @@
     "default_title" : "Clique para criar um cartão Trello com este mantis."
   },
   "options_ui": {
-    "page": "options.html",
+    "page": "option2.html",
     "open_in_tab": true
   },
   "content_scripts": [
@@ -34,7 +34,7 @@
       "js": [
         "libs/jquery/jquery.3.7.1.min.js",
         "js/client.js",
-        "js/googletagmanager.js",
+        "libs/analytics/googletagmanager.js",
         "js/content.js"
       ],
       "run_at": "document_end"

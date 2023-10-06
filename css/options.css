@@ -504,6 +504,14 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 
 .card {
     background: #767aa9;
+    position: relative; /* para que o posicionamento absoluto do ícone funcione corretamente */
+}
+
+.close-icon {
+    position: absolute;
+    top: 5px; /* ajuste conforme necessário */
+    right: 5px; /* ajuste conforme necessário */
+    cursor: pointer; /* para que pareça clicável */
 }
 
 .inputCard {
@@ -516,4 +524,9 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 
 .discreetEdge {
     border-color: slategray;
+}
+
+.selectCat {
+    background: #000000;
+    background-color: #70738f;
 }

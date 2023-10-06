@@ -140,29 +140,13 @@ function restore_options() {
     }
 }
 
-function adicionarCard() {
-
-    let col = document.createElement("div");
-    col.className = "col";
-    let card = document.createElement("div");
-    card.className = "card";
-    let card_body = document.createElement("div");
-    card_body.className = "card-body";
-    let card_title = document.createElement("div");
-    card_title.className = "card-title";
-    let input_group1 = document.createElement("input-group mb-3");
-    input_group1.className = "input-group mb-3";
-    let span1 = document.createElement("span");
-    span1.className = "input-group-text discreetEdge spanCard";
-
-    let input1 = document.createElement("input");
-    input1.className = "";
-
-}
-
-
 
 function criarCard(categoria) {
+
+    const cat = document.getElementById("inputGroupSelect03").value;
+
+    let num = (document.getElementsByClassName("card").length + 1).toString();
+
     // Criação do elemento principal <div class="col">
     const divCol = document.createElement('div');
     divCol.className = "col";
@@ -170,6 +154,25 @@ function criarCard(categoria) {
     // Criação do elemento <div class="card">
     const divCard = document.createElement('div');
     divCard.className = "card";
+    divCard.id = "cardNum" + num;
+
+    const butsvg = document.createElement("div");
+    butsvg.type = "button";
+    butsvg.onclick = click("cardNum" + num);
+    butsvg.className = "close-icon";
+
+    // Crie o elemento SVG
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    // svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    svg.setAttribute('height', '1em');
+    svg.setAttribute('viewBox', '0 0 384 512');
+
+    // Crie o elemento PATH para o SVG
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z');
+
+    // Adicione o elemento PATH ao SVG
+    svg.appendChild(path);
 
     // Criação do elemento <div class="card-body">
     const divCardBody = document.createElement('div');
@@ -178,7 +181,7 @@ function criarCard(categoria) {
     // Criação do elemento <h5 class="card-title">Status</h5>
     const h5 = document.createElement('h5');
     h5.className = "card-title";
-    h5.textContent = "Status";
+    h5.textContent = cat;
 
     // Criação dos grupos de input
     const createInputGroup = (id, labelText) => {
@@ -222,6 +225,9 @@ function criarCard(categoria) {
     divCardBody.appendChild(divInputGroupTag);
     divCardBody.appendChild(divFormSwitch);
 
+    butsvg.appendChild(svg);
+    divCard.appendChild(butsvg);
+
     // Adicionando o card body ao card
     divCard.appendChild(divCardBody);
 
@@ -231,35 +237,10 @@ function criarCard(categoria) {
     document.getElementById("cardsContainer").appendChild(divCol);
 }
 
-function adicionarCard() {
-    // Criando o trecho HTML que você forneceu
-    var cardHTML = `
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Status</h5>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text discreetEdge spanCard">Valor</span>
-                        <input id="valorStatus" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text discreetEdge spanCard">Tag</span>
-                        <input id="tagStatus" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                    </div>
-                    <div class="form-check form-switch">
-                        <input id="switchStatus" class="form-check-input" type="checkbox" role="switch">
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-    // Adicionando o trecho HTML em um container específico
-    // Supondo que há um container com o id 'container' onde você quer adicionar o card
-    var container = document.getElementById('cardsContainer');
-    container.innerHTML += cardHTML;
+function click (cardNum) {
+    console.log(cardNum);
+    // document.getElementById(cardNum).remove();
 }
-
 
 
 document.addEventListener('DOMContentLoaded', restore_options);
