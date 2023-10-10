@@ -37,9 +37,9 @@ Extensão do chrome para criar cards no Trello a partir de casos do Mantis PRODE
 
 ## Adicionar TAGs
 
-1) Para adicionar um novo filtro basta escolher uma das categoria abaixo:
+1) Para adicionar um novo filtro basta escolher uma das categoria, circuladas em vermelho, abaixo:
 
-()[]
+![mantisExemplo](https://github.com/PedroWC/Mantis2Trello/assets/63911644/ba61585b-503f-4df2-9c57-ef0f4effff79)
 
 2) Selecione a categoria desejada no campo "Escolha..." e clique em adicionar.
 3) No campo "Valor", digite os caracteres que deseja filtrar no campo escolhido no item 1.
