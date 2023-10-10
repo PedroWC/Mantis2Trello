@@ -10,7 +10,7 @@
     "storage"
   ],
   "background": {
-    "service_worker": "js/background.js"
+    "service_worker": "background.js"
   },
   "icons": {
     "16": "assets/icons/Mantis2TrelloIcon16.png",
@@ -22,7 +22,7 @@
     "default_title" : "Clique para criar um cartão Trello com este mantis."
   },
   "options_ui": {
-    "page": "option2.html",
+    "page": "options.html",
     "open_in_tab": true
   },
   "content_scripts": [
@@ -33,11 +33,15 @@
       ],
       "js": [
         "libs/jquery/jquery.3.7.1.min.js",
-        "js/client.js",
+        "client.js",
         "libs/analytics/googletagmanager.js",
-        "js/content.js"
+        "content.js"
       ],
       "run_at": "document_end"
     }
+  ],
+  "host_permissions": [
+    "*://*/*mantis.gov.br/view.php*",
+    "*://*/view.php*"
   ]
 }

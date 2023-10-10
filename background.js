@@ -25,29 +25,29 @@ chrome.runtime.onInstalled.addListener(function () {
 function sendClickMessage() {
   // Obtém a aba ativa atual
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var currentTab = tabs[0].id;
+    let currentTab = tabs[0].id;
     // Muda o ícone da extensão para um ícone de "carregando"
     chrome.action.setIcon({
-      path: "icons/Mantis2TrelloLoadingIcon16.png",
+      path: "assets/icons/Mantis2TrelloLoadingIcon16.png",
       tabId: currentTab
     });
     // Envia uma mensagem para o conteúdo da aba atual
     chrome.tabs.sendMessage(currentTab, "");
   });
-};
+}
 
 // Callback para mensagens recebidas da extensão
 function onMessageCallback(request, sender, sendResponse) {
   // Obtém a aba ativa atual
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var currentTab = tabs[0].id;
+    let currentTab = tabs[0].id;
     // Muda o ícone da extensão de volta para o ícone padrão
     chrome.action.setIcon({
       path: "icons/Mantis2TrelloIcon16.png",
       tabId: currentTab  // O tabId ainda pode ser usado se você quiser que o ícone seja atualizado apenas para uma aba específica
     });
   });  
-};
+}
 
 // Adiciona um ouvinte para o evento de clique no ícone da extensão
 chrome.action.onClicked.addListener(sendClickMessage);

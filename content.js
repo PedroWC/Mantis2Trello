@@ -18,6 +18,7 @@ let mantis2TrelloOptions = {
   trelloColumnId: '',
   tags: []
 };
+
 const createCard = async function () {
   let newCard = {
     name: "Mantis " + gx('/html/body/table[3]/tbody/tr[10]/td[2]').innerText,
@@ -31,9 +32,10 @@ const createCard = async function () {
   window.Trello.post('/cards/', newCard, creationSuccess, creationFailure);
   gtag('event', 'click_add_card');
 };
+
 const authenticationSuccess = async function () {
   console.log('Autenticação bem-sucedida');
-  console.log('Tentando criar um cartão window.Trello...');
+  console.log('Tentando criar um cartão Trello...');
   await createCard();
 };
 
@@ -41,17 +43,16 @@ const authenticationFailure = function () {
   console.log('Falha na autenticação');
   alert('Não consegui autenticar com o window.Trello. O cartão não será criado.')
 };
-const creationSuccess = function (aux, data) {
-  console.log('Cartão criado com sucesso. Dados retornados:' + JSON.stringify(data));
+
+const creationSuccess = function () {
   alert('Cartão criado com sucesso.');
+  console.log('Cartão criado com sucesso.');
 };
 
 const creationFailure = function (data) {
   console.log('Error:' + JSON.stringify(data));
   alert('Error:' + JSON.stringify(data));
 };
-
-
 
 async function searchTag(tagName) {
 
@@ -70,12 +71,6 @@ async function searchTag(tagName) {
 
 async function selectTags(tags) {
   let labels = [];
-  const tagKeys = [
-    'Categoria', 'Gravidade',
-    'Frequencia', 'Relator',
-    'Visibilidade', 'Prioridade',
-    'Status'
-  ];
   const xpathMap = {
     'Categoria': '/html/body/table[3]/tbody/tr[3]/td[2]',
     'Gravidade': '/html/body/table[3]/tbody/tr[3]/td[3]',
@@ -86,13 +81,12 @@ async function selectTags(tags) {
     'Status': '/html/body/table[3]/tbody/tr[7]/td[2]'
   };
 
-  for (const tagKey of tagKeys) {
-    if (tags[tagKey].switch) {
+  for (const tag of tags) {
+    if (tag.switchStatus) {
+      let value = gx(xpathMap[tag.titulo]).innerText;
 
-      let value = gx(xpathMap[tagKey]).innerText;
-
-      if (value.includes(tags[tagKey].valor)) {
-        let res = await searchTag(tags[tagKey].tag);
+      if (value.includes(tag.valor)) {
+        let res = await searchTag(tag.tag);
         if (res) {
           labels.push(res);
         }
