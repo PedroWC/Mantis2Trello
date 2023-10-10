@@ -2,247 +2,121 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8">
-    <title>Mantis2Trello</title>
-    <!-- Font-->
-    <link rel="stylesheet" type="text/css" href="libs/fonts/font.css">
-    <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
-    <!-- Main Style Css -->
-    <link rel="stylesheet" href="css/options.css" />
+  <meta charset="utf-8">
+  <title>Mantis2Trello</title>
+  <!-- Font-->
+  <link rel="stylesheet" type="text/css" href="libs/fonts/font.css">
+  <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
+  <!-- Main Style Css -->
+  <link rel="stylesheet" href="css/options.css" />
 </head>
 
 <body>
-    <div class="page-content">
-        <div class="wizard-heading">Mantis2Trello</div>
-        <div class="wizard-v6-content">
-            <div class="wizard-form">
-                <form class="form-register" id="form-register">
-                    <div id="form-total">
-                        <!-- SECTION 1 -->
-                        <h2>
-                            <p class="step-icon">
-                                <span>1</span>
-                            </p>
-                            <span class="step-text">Keys</span>
-                        </h2>
-                        <section>
-                            <div class="inner">
+<div class="page-content">
+  <div class="wizard-heading">Mantis2Trello</div>
+  <div class="wizard-v6-content">
+    <div class="wizard-form">
+      <form class="form-register" id="form-register">
+        <div id="form-total">
+          <!-- SECTION 1 -->
+          <h2>
+            <p class="step-icon">
+              <span>1</span>
+            </p>
+            <span class="step-text">Keys</span>
+          </h2>
+          <section>
+            <div class="inner">
 
-                                <div class="form-heading">
-                                    <h3>Keys</h3>
-                                </div>
+              <div class="form-heading">
+                <h3>Keys</h3>
+              </div>
 
-                                <div class="mb-3">
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon1">Trello API Key</span>
-                                        <input type="text" class="form-control" id="trelloAPIKey"
-                                            aria-describedby="basic-addon3 basic-addon4">
-                                    </div>
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon2">Trello board id</span>
-                                        <input type="text" class="form-control" id="trelloBoardId"
-                                            aria-describedby="basic-addon3 basic-addon4">
-                                    </div>
-                                </div>
+              <div class="mb-3">
+                <div class="input-group">
+                  <label for="trelloAPIKey" class="input-group-text" id="basic-addon1">Trello API Key</label>
+                  <input type="text" class="form-control form-itens" id="trelloAPIKey" aria-describedby="basic-addon3 basic-addon4">
+                </div>
+              </div>
 
 
-                                <div class="mb-3">
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon3">Trello column id</span>
-                                        <input type="text" class="form-control" id="trelloColumnId"
-                                            aria-describedby="basic-addon3 basic-addon4">
-                                    </div>
-                                </div>
+              <div class="mb-3">
+                <div class="input-group">
+                  <label for="trelloBoardId" class="input-group-text" id="basic-addon2">Trello board id</label>
+                  <input type="text" class="form-control form-itens" id="trelloBoardId"
+                         aria-describedby="basic-addon3 basic-addon4">
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <div class="input-group">
+                  <label for="trelloColumnId" class="input-group-text" id="basic-addon3">Trello column id</label>
+                  <input type="text" class="form-control form-itens" id="trelloColumnId"
+                         aria-describedby="basic-addon3 basic-addon4">
+                </div>
+              </div>
 
 
 
-                            </div>
-                        </section>
-                        <!-- SECTION 2 -->
-                        <h2>
-                            <p class="step-icon"><span>2</span></p>
-                            <span class="step-text">Tags</span>
-                        </h2>
-                        <section>
-                            <div class="inner">
-                                <div class="form-heading">
-                                    <h3>Tags</h3>
-                                </div>
-                                <div class="container shadow-lg p-3 mb-5 rounded">
-                                    <!-- Primeira linha -->
-                                    <div class="row">
-                                        <!-- Primeiro card -->
-                                        <div class="col-md-4 mb-3 mt-3">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Categoria</h5>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Valor</span>
-                                                        <input id="valorCategoria" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Tag</span>
-                                                        <input id="tagCategoria" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="form-check form-switch">
-                                                        <input id="switchCategoria" class="form-check-input" type="checkbox" role="switch">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Segundo card -->
-                                        <div class="col-md-4 mb-3 mt-3">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Gravidade</h5>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Valor</span>
-                                                        <input id="valorGravidade" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Tag</span>
-                                                        <input id="tagGravidade" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="form-check form-switch">
-                                                        <input id="switchGravidade" class="form-check-input" type="checkbox" role="switch">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Terceiro card -->
-                                        <div class="col-md-4 mb-3 mt-3">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Freqüência</h5>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Valor</span>
-                                                        <input id="valorFrequencia" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Tag</span>
-                                                        <input id="tagFrequencia" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="form-check form-switch">
-                                                        <input id="switchFrequencia" class="form-check-input" type="checkbox" role="switch">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Segunda linha -->
-                                    <div class="row">
-                                        <!-- Quarto card -->
-                                        <div class="col-md-4 mb-3 mt-3">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Relator</h5>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Valor</span>
-                                                        <input id="valorRelator" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Tag</span>
-                                                        <input id="tagRelator" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="form-check form-switch">
-                                                        <input id="switchRelator" class="form-check-input" type="checkbox" role="switch">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Quinto card -->
-                                        <div class="col-md-4 mb-3 mt-3">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Visibilidade</h5>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Valor</span>
-                                                        <input id="valorVisibilidade" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Tag</span>
-                                                        <input id="tagVisibilidade" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="form-check form-switch">
-                                                        <input id="switchVisibilidade" class="form-check-input" type="checkbox" role="switch">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Sexto card -->
-                                        <div class="col-md-4 mb-3 mt-3">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Prioridade</h5>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Valor</span>
-                                                        <input id="valorPrioridade" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Tag</span>
-                                                        <input id="tagPrioridade" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="form-check form-switch">
-                                                        <input id="switchPrioridade" class="form-check-input" type="checkbox" role="switch">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    <!-- Terceira linha -->
-                                    <div class="row">
-                                        <!-- Sétimo card -->
-                                        <div class="col-md-4 mb-3 mt-3">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Status</h5>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Valor</span>
-                                                        <input id="valorStatus" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text discreetEdge spanCard">Tag</span>
-                                                        <input id="tagStatus" type="text" class="form-control discreetEdge inputCard" aria-describedby="basic-addon3">
-                                                    </div>
-                                                    <div class="form-check form-switch">
-                                                        <input id="switchStatus" class="form-check-input" type="checkbox" role="switch">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- SECTION 3 -->
-                        <h2>
-                            <p class="step-icon"><span>3</span></p>
-                            <span class="step-text">Confirm</span>
-                        </h2>
-                        <section>
-                            <div class="inner">
-                                <div class="form-heading">
-                                    <h3>Comfirm</h3>
-                                </div>
-                            </div>
-
-                        </section>
-                    </div>
-                </form>
             </div>
+          </section>
+          <!-- SECTION 2 -->
+          <h2>
+            <p class="step-icon"><span>2</span></p>
+            <span class="step-text">Tags</span>
+          </h2>
+          <section>
+            <div class="inner">
+              <div class="form-heading">
+                <h3>Tags</h3>
+              </div>
+              <div class="container shadow-lg p-3 mb-5 rounded">
+                <div class="input-group">
+                  <label for="inputGroupSelect03" class="btn btn-secondary" id="criaCard" type="button">Adicionar</label>
+                  <select class="form-select form-itens" id="inputGroupSelect03" >
+                    <option selected>Escolha...</option>
+                    <option value="Categoria">Categoria</option>
+                    <option value="Gravidade">Gravidade</option>
+                    <option value="Frequencia">Frequencia</option>
+                    <option value="Relator">Relator</option>
+                    <option value="Visibilidade">Visibilidade</option>
+                    <option value="Prioridade">Prioridade</option>
+                    <option value="Status">Status</option>
+                  </select>
+                </div>
+              </div>
+              <div class="container shadow-lg p-3 mb-5 rounded">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="cardsContainer">
+
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- SECTION 3 -->
+          <h2>
+            <p class="step-icon"><span>3</span></p>
+            <span class="step-text">Confirm</span>
+          </h2>
+          <section>
+            <div class="inner">
+              <div class="form-heading">
+                <h3>Comfirm</h3>
+              </div>
+            </div>
+
+          </section>
         </div>
+      </form>
     </div>
-    <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="libs/jquery/jquery-3.3.1.min.js"></script>
-    <script src="libs/jquery/jquery.steps.min.js"></script>
-    <script src="libs/jquery/jquery-ui.min.js"></script>
-    <script src="libs/analytics/googletagmanager.js"></script>
-    <script src="js/options.js"></script>
+  </div>
+</div>
+<script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="libs/jquery/jquery-3.3.1.min.js"></script>
+<script src="libs/jquery/jquery.steps.min.js"></script>
+<script src="libs/jquery/jquery-ui.min.js"></script>
+<script src="libs/analytics/googletagmanager.js"></script>
+<script src="js/options.js"></script>
 </body>
 
 </html>
