@@ -1,14 +1,6 @@
 # Mantis2Trello
 Extensão do chrome para criar cards no Trello a partir de casos do Mantis PRODEMGE.
 
-## Tarefas 
-
-- [x] Criar Readme
-- [x] Estruturar pastas
-- [ ] Mensagem de confirmação de salvamento de configurações não está funcionando
-- [ ] Autorização para criação de token trello com problemas
-- [ ] Implementar tags
-- [ ] Conferir eventos no google analytics
 
 ## Requisitos de configuração
 ![primeiroPassoConfiguracao](https://github.com/PedroWC/Mantis2Trello/assets/63911644/ed131ea6-dd05-40ab-932b-96d07aaae417)
@@ -19,7 +11,7 @@ Extensão do chrome para criar cards no Trello a partir de casos do Mantis PRODE
 
 ### Como obter a chave da API do Trello
 
-1) Obtenha sua chave de API de: [Chave de API](https://trello.com/power-ups/admin)
+1) Obtenha sua chave de API pelo link [Chave de API](https://trello.com/power-ups/admin)
 2) Adicione uma nova Power-up.
    ![configuracaoPowerUpTrello](https://github.com/PedroWC/Mantis2Trello/assets/63911644/c3166b45-ddf4-424b-9a0e-a7e547ad6eda)
    2.1) Dê um título à integração.<br>
@@ -27,7 +19,7 @@ Extensão do chrome para criar cards no Trello a partir de casos do Mantis PRODE
    2.3) Preencha seu email nos campos "Email" e "Contato de suporte".<br>
    2.4) Preencha seu nome no campo "Autor".
    
-3) Após criar uma Power-up, a aba lateral esquerda o botão "Chave de API" levará até a chave necessária.
+3) Após criar uma Power-up, na aba lateral esquerda, o botão "Chave de API" levará até a chave necessária.
 
 ### Como obter a chave de identificação de quadro do Trello
 
@@ -45,22 +37,19 @@ Extensão do chrome para criar cards no Trello a partir de casos do Mantis PRODE
 
 ## Adicionar TAGs
 
-### Obter id de TAGS
+1) Para adicionar um novo filtro basta escolher uma das categoria abaixo:
 
-1) Crie uma tag nesse card de exemplo, esse card será usado nos novos cards automáticos gerados pela extensão.
-2) No arquivo JSON, busque pelo nome da tag e identifique o id dela, como na imagem abaixo:
-   <br><br>
-   ![tagExemplo](https://github.com/PedroWC/Mantis2Trello/assets/63911644/078108bc-13dd-4673-a449-c149d3328b53)
-   <br>
-   No exemplo acima, o id da tag é "64fe9edec4b65b649a80a5fd"
+()[]
+
+2) Selecione a categoria desejada no campo "Escolha..." e clique em adicionar.
+3) No campo "Valor", digite os caracteres que deseja filtrar no campo escolhido no item 1.
+4) No campo "Tag", digite o nome exato da etiqueta do trello.
+   <br>Obs: A etiqueta deve existir no trello.
+5) Ative os filtros de tags desejados pela chave localizada abaixo do campo Tag.
+6) Para apagar um filtro de tag basta clicar no X localizado na parte superior direita do card correspondente.
 
 
-### Adicionar uma nova TAG
-
-1) Adicione um nome para sua nova TAG
-2) Na página de qualquer mantis, inspecione o elemento HTML que deseja filtrar e copie seu XPATH completo e cole no campo correspondente na página de configuração da extensão.
-3) Adicione no campo "Value", o texto a ser identificado no elemento.
-4) Adicione no campo "TAG Id" o id da tag correspondente obtida em [Obter id de TAGS](#obter-id-de-tags)
+### Por fim basta clicar em "Finish" na aba "Confirm".
 
 
 ## Use o plugin pela primeira vez
